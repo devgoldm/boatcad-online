@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import JsDos from './JsDos';
 import './App.css';
 
