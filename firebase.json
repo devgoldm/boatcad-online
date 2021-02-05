@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "public",
+    "target": "boatcad",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
