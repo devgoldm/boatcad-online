@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { DosFactory } from "js-dos";
 import zipFile from "./BL3D.zip";
 require("js-dos");
 const Dos = window.Dos;
