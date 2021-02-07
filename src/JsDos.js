@@ -8,6 +8,7 @@ const Dos = window.Dos;
 const JsDos = () => {
     const ref = useRef(null);
     const [windowCi, setWindowCi] = useState(null);
+    const [enterPressed, setEnterPressed] = useState(false);
     const [text, setText] = useState("Waiting for keyboard input...");
 
     useEffect(() => {
@@ -35,6 +36,9 @@ const JsDos = () => {
 
     useEffect(() => {
       document.addEventListener("keydown", (event) => {
+        if(event.repeat)
+          return;
+
         const debugCode = keycode(keycode(event));
         setText(`KeyboardEvent: key='${event.key}' | code='${event.code}' | keyCode='${debugCode}'`);
         pressKey(keycode(event))});
@@ -42,6 +46,9 @@ const JsDos = () => {
 
     const pressKey = (code) => {
       const newCode = keycode(code);
+      if(newCode === 13)
+        return;
+
       windowCi?.simulateKeyEvent(newCode, true);
       windowCi?.simulateKeyEvent(newCode, false);
       console.log("Key code pressed = ", newCode);
