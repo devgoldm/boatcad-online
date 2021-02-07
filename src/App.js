@@ -7,7 +7,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 function App() {
   return (
     <div style={{backgroundColor: "#0000aa"}}>
-      <div class="jumbotron jumbotron-fluid" style={{backgroundColor: "#0000aa"}}>
+      <div className="jumbotron jumbotron-fluid" style={{backgroundColor: "#0000aa"}}>
         <Container>
           <Row>
             <Col xs={4}></Col>

@@ -12,23 +12,30 @@ function FilePicker() {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    let request = indexedDB.open("/boatcad");
-    request.onerror = function() {
-      console.log("App can't access indexedDB");
-    };
-    request.onsuccess = function(event) {
-      let dbResult = event.target.result;
-      dbResult.onerror = function(event) {
-        console.error("Database error: " + event.target.errorCode);
-      };
+    setTimeout(() => { 
+        let request = indexedDB.open("/boatcad");
+        request.onerror = function() {
+          console.log("App can't access indexedDB");
+        };
+        request.onsuccess = function(event) {
+          let dbResult = event.target.result;
+          dbResult.onerror = function(event) {
+            console.error("Database error: " + event.target.errorCode);
+          };
 
-      setDb(dbResult);
-    };
+          setDb(dbResult);
+        };
+      }, 5000);
   }, []);
 
   useEffect(() => {
     if(db)
     {
+      console.log("object stores: ", db.objectStoreNames);
+
+      if(!db.objectStoreNames.contains(OBJ_STORE))
+        return;
+
       db.transaction(OBJ_STORE).objectStore(OBJ_STORE).getAllKeys().onsuccess = function(allKeysEvent) {
         const allKeys = allKeysEvent.target.result;
         console.log("Files are: ", allKeys);
