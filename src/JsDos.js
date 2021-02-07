@@ -5,7 +5,7 @@ require("js-dos");
 const Dos = window.Dos;
 
 
-const JsDos = () => {
+const JsDos = (props) => {
     const ref = useRef(null);
     const [windowCi, setWindowCi] = useState(null);
     const [text, setText] = useState("Waiting for keyboard input...");
@@ -20,6 +20,7 @@ const JsDos = () => {
                     return runtime.main(["-c", "cd boatcad", "-c", "BL3D.EXE"]);
                 }).then(ci => {
                   setWindowCi(ci); 
+                  props.setJsDosIsReady(true);
                   return ci;
                 });
             });

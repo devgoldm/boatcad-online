@@ -3,8 +3,13 @@ import FilePicker from './FilePicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Col, Container, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+
 
 function App() {
+
+  const [jsDosIsReady, setJsDosIsReady] = useState(false);
+
   return (
     <div style={{backgroundColor: "#0000aa"}}>
       <div className="jumbotron jumbotron-fluid" style={{backgroundColor: "#0000aa"}}>
@@ -12,7 +17,7 @@ function App() {
           <Row>
             <Col xs={4}></Col>
             <Col xs={4}>
-              <JsDos/>
+              <JsDos setJsDosIsReady={setJsDosIsReady}/>
             </Col>
             <Col xs={4}></Col>
           </Row>
@@ -22,7 +27,7 @@ function App() {
       <Container>
         <Row>
           <Col xs={4}></Col>
-          <Col xs={4}><FilePicker/></Col>
+          <Col xs={4}><FilePicker jsDosIsReady={jsDosIsReady}/></Col>
           <Col xs={4}></Col>
         </Row>
       </Container>

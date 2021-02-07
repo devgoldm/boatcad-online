@@ -5,28 +5,29 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 const OBJ_STORE = "FILE_DATA";
 
-function FilePicker() {
+function FilePicker(props) {
   
   const [db, setDb] = useState(null);
   const [fileList, setFileList] = useState(null);
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => { 
-        let request = indexedDB.open("/boatcad");
-        request.onerror = function() {
-          console.log("App can't access indexedDB");
+    if(props.jsDosIsReady)
+    { 
+      let request = indexedDB.open("/boatcad");
+      request.onerror = function() {
+        console.log("App can't access indexedDB");
+      };
+      request.onsuccess = function(event) {
+        let dbResult = event.target.result;
+        dbResult.onerror = function(event) {
+          console.error("Database error: " + event.target.errorCode);
         };
-        request.onsuccess = function(event) {
-          let dbResult = event.target.result;
-          dbResult.onerror = function(event) {
-            console.error("Database error: " + event.target.errorCode);
-          };
 
-          setDb(dbResult);
-        };
-      }, 5000);
-  }, []);
+        setDb(dbResult);
+      };
+    }
+  }, [props.jsDosIsReady]);
 
   useEffect(() => {
     if(db)
