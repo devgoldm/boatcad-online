@@ -39,7 +39,9 @@ function FilePicker() {
               const fileBlob = fileEvent.target.result;
               console.log(`${keyName} :`, fileBlob);
 
-              let blob = new Blob(fileEvent.target.result.contents, {type: "application/octet-stream"});
+              const mimeType = "application/octet-stream";
+              const dataArray = fileEvent.target.result.contents;
+              const blob = new Blob([dataArray], {type: mimeType});              
               saveAs(blob, keyName.replace(/^.*[\\\/]/, ''));
             }
           }
