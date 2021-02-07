@@ -40,7 +40,7 @@ const JsDos = () => {
           return;
 
         const debugCode = keycode(keycode(event));
-        setText(`KeyboardEvent: key='${event.key}' | code='${event.code}' | keyCode='${debugCode}'`);
+        setText(`*KeyboardEvent* : key='${event.key}' | code='${event.code}' | keyCode='${debugCode}'`);
         pressKey(keycode(event))});
     }, []);
 
