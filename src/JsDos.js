@@ -1,11 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import Keyboard from 'react-simple-keyboard';
 import zipFile from "./BL3D.zip";
-import keycode from 'keycode';
-import 'react-simple-keyboard/build/css/index.css';
 require("js-dos");
 const Dos = window.Dos;
-const DosController = window.DosController;
 
 
 const JsDos = () => {
