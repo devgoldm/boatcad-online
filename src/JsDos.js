@@ -8,18 +8,16 @@ const Dos = window.Dos;
 const JsDos = () => {
     const ref = useRef(null);
     const [windowCi, setWindowCi] = useState(null);
-    const [enterPressed, setEnterPressed] = useState(false);
     const [text, setText] = useState("Waiting for keyboard input...");
 
     useEffect(() => {
         if (ref !== null) {
             const ciPromise = Dos(ref.current, {
                 wdosboxUrl: "https://js-dos.com/6.22/current/wdosbox.js",
-                cycles: 1000,
                 autolock: false,
             }).then((runtime) => {
-                return runtime.fs.extract(zipFile).then(() => {
-                    return runtime.main(["-c", "BL3D.EXE"]);
+                return runtime.fs.extract(zipFile, "/boatcad").then(() => {
+                    return runtime.main(["-c", "cd boatcad", "-c", "BL3D.EXE"]);
                 }).then(ci => {
                   setWindowCi(ci); 
                   return ci;
@@ -55,9 +53,9 @@ const JsDos = () => {
     };
 
     return (
-    <div>
-      <p style={{color: "white"}}>{text}</p>
-      <canvas ref={ref} />
+    <div className="canvasParent">
+      {/* <p style={{color: "white"}}>{text}</p> */}
+      <canvas className="dosCanvas" ref={ref}/>
     </div> 
     );
 }
