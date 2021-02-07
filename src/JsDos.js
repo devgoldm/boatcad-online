@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import zipFile from "./BL3D.zip";
+import keycode from 'keycode';
 require("js-dos");
 const Dos = window.Dos;
 
@@ -33,13 +34,17 @@ const JsDos = () => {
     }, [ref]);
 
     useEffect(() => {
-      document.addEventListener("keydown", (event) => {setText(`KeyboardEvent: key='${event.key}' | code='${event.code}'`); pressKey(event.code)});
+      document.addEventListener("keydown", (event) => {
+        const debugCode = keycode(keycode(event));
+        setText(`KeyboardEvent: key='${event.key}' | code='${event.code}' | keyCode='${debugCode}'`);
+        pressKey(keycode(event))});
     }, []);
 
     const pressKey = (code) => {
-      windowCi?.simulateKeyEvent(code, true);
-      windowCi?.simulateKeyEvent(code, false);
-      console.log("Key code pressed = ", code);
+      const newCode = keycode(code);
+      windowCi?.simulateKeyEvent(newCode, true);
+      windowCi?.simulateKeyEvent(newCode, false);
+      console.log("Key code pressed = ", newCode);
     };
 
     return (
