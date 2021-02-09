@@ -1,4 +1,21 @@
 html {
   overflow: hidden;
-  background-color: #0000aa;
+  background-color: #000000;
+}
+
+.mainBg {
+  background-color: #000000;
+}
+
+.nav-link.active {
+  background-color: #000000 !important;
+  color: yellow !important;
+  border-bottom: 0 !important;
+  font-weight: bold !important;
+}
+
+.nav-link {
+  background-color: #505050 !important;
+  color: whitesmoke !important;
+  min-width: 15vw !important;
 }

@@ -54,7 +54,7 @@ function FilePicker(props) {
             }
           }
 
-          if(name.endsWith(".fs") || name.toUpperCase().endsWith(".EXE")) return <tr key={idx}></tr>;
+          if(!name.toUpperCase().endsWith(".BOF") && !name.toUpperCase().endsWith(".DOC")) return <tr key={idx}></tr>;
 
           return ( 
             <tr style={{color: "white", textAlign: "center"}} key={idx}>
@@ -71,21 +71,23 @@ function FilePicker(props) {
   return (
     <Container>
       <Row>
-        <Col xs={8}>
-          <h3 style={{color: "yellow", textAlign: "center"}}>Files</h3><br/>
-        </Col>
-        <Col xs={4}>
-          <Button size="sm" onClick={() => {setRefresh(!refresh)}}>Refresh</Button>
+        <Col xs={12}>
+          <h1 style={{color: "yellow", textAlign: "center"}}>
+            Files&nbsp;&nbsp;<Button size="sm" onClick={() => {setRefresh(!refresh)}}>Refresh</Button>
+          </h1>
         </Col>
       </Row>
+      <br/>
       <Row>
-        <div>
-          <table>
-              <tbody>
-                {fileList}
-              </tbody>
-          </table>
-        </div>
+        <Col xs={12}>
+          <div>
+            <table>
+                <tbody>
+                  {fileList}
+                </tbody>
+            </table>
+          </div>
+        </Col>
       </Row>
     </Container>
   );
