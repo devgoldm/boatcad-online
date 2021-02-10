@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="mainBg">
-      <Tabs classNAme="topLevelTabs" defaultActiveKey="boatcad">
+      <Tabs className="topLevelTabs" defaultActiveKey="boatcad" onSelect={(key, ev) => ev?.currentTarget.blur()}>
         <Tab eventKey="boatcad" title="BoatCAD">
           <div className="jumbotron jumbotron-fluid mainBg">
             <Container>
