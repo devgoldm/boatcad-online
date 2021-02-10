@@ -54,7 +54,7 @@ function FilePicker(props) {
             }
           }
 
-          if(!name.toUpperCase().endsWith(".BOF") && !name.toUpperCase().endsWith(".DOC")) return <tr key={idx}></tr>;
+          if(!name.toUpperCase().endsWith(".BOF") && !name.toUpperCase().endsWith(".OFF") && !name.toUpperCase().endsWith(".DOC")) return <tr key={idx}></tr>;
 
           return ( 
             <tr style={{color: "white", textAlign: "center"}} key={idx}>
