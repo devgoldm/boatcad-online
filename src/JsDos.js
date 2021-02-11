@@ -17,7 +17,7 @@ const JsDos = (props) => {
                 autolock: false,
             }).then((runtime) => {
                 return runtime.fs.extract(zipFile, "/boatcad").then(() => {
-                    return runtime.main(["-c", "cd boatcad", "-c", "BOAT.bat"]);
+                    return runtime.main(["-c", "cd boatcad", "-c", "BOAT.EXE"]);
                 }).then(ci => {
                   setWindowCi(ci); 
                   props.setJsDosIsReady(true);
