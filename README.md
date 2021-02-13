@@ -1,5 +1,4 @@
 # boatcad-online
-DOS boat designer in the browser
 ![](./front_page_image.png)
 
 ## Setup
