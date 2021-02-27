@@ -56,13 +56,14 @@ function FilePicker(props) {
 
           const numericalExt = name.match(/\d+$/);
 
-          if(name.toUpperCase().endsWith(".BOF") || 
-             name.toUpperCase().endsWith(".OFF") || 
-             name.toUpperCase().endsWith(".DXF") ||
+          if(name.endsWith("HEADER.DXF"))
+            return <div key={idx}></div>;
+          
+          if(name.toUpperCase().endsWith(".DXF") ||
              name.toUpperCase().endsWith(".PLT") ||
              name.toUpperCase().endsWith(".TXT") ||
              name.toUpperCase().endsWith(".IGS") ||
-             numericalExt?.length === 3
+             numericalExt
             ) 
             return ( 
               <Col xs={4} md={2} style={{color: "white", textAlign: "center", marginBottom: "10px"}} key={idx}>
