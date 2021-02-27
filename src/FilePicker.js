@@ -54,22 +54,24 @@ function FilePicker(props) {
             }
           }
 
-          if(!name.toUpperCase().endsWith(".BOF") && 
-             !name.toUpperCase().endsWith(".OFF") && 
-             !name.toUpperCase().endsWith(".DXF") &&
-             !name.toUpperCase().endsWith(".PLT") &&
-             !name.toUpperCase().endsWith(".TXT") &&
-             !name.toUpperCase().endsWith(".IGS") &&
-             !name.toUpperCase().endsWith(".NNN")
-            ) 
-            return <tr key={idx}></tr>;
+          const numericalExt = name.match(/\d+$/);
 
-          return ( 
-            <tr style={{color: "white", textAlign: "center"}} key={idx}>
-              <td>{name.replace(/^.*[\\\/]/, '')}&nbsp;</td>
-              <td><Button size="sm" variant="success" onClick={() => {download(name)}}>Download</Button></td>
-            </tr>
-          )
+          if(name.toUpperCase().endsWith(".BOF") || 
+             name.toUpperCase().endsWith(".OFF") || 
+             name.toUpperCase().endsWith(".DXF") ||
+             name.toUpperCase().endsWith(".PLT") ||
+             name.toUpperCase().endsWith(".TXT") ||
+             name.toUpperCase().endsWith(".IGS") ||
+             numericalExt?.length === 3
+            ) 
+            return ( 
+              <Col xs={4} md={2} style={{color: "white", textAlign: "center", marginBottom: "10px"}} key={idx}>
+                {name.replace(/^.*[\\\/]/, '')}<br/>
+                <Button size="sm" variant="success" onClick={() => {download(name)}}>Download</Button>
+              </Col>
+            )
+          else
+            return <div key={idx}></div>;
         });
         setFileList(keyList);
       };
@@ -77,6 +79,7 @@ function FilePicker(props) {
   }, [db, refresh]);
 
   return (
+    <div style={{overflowY: "auto", overflowX: "hidden"}}>
     <Container>
       <Row>
         <Col xs={12}>
@@ -87,17 +90,10 @@ function FilePicker(props) {
       </Row>
       <br/>
       <Row>
-        <Col xs={12}>
-          <div>
-            <table>
-                <tbody>
-                  {fileList}
-                </tbody>
-            </table>
-          </div>
-        </Col>
+        {fileList}
       </Row>
     </Container>
+    </div>
   );
 }
 
