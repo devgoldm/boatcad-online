@@ -8,7 +8,6 @@ const Dos = window.Dos;
 const JsDos = (props) => {
     const ref = useRef(null);
     const [windowCi, setWindowCi] = useState(null);
-    const [text, setText] = useState("Waiting for keyboard input...");
 
     useEffect(() => {
         if (ref !== null) {
@@ -33,29 +32,8 @@ const JsDos = (props) => {
         }
     }, [ref]);
 
-    useEffect(() => {
-      document.addEventListener("keydown", (event) => {
-        if(event.repeat)
-          return;
-
-        const debugCode = keycode(keycode(event));
-        setText(`*KeyboardEvent* : key='${event.key}' | code='${event.code}' | keyCode='${debugCode}'`);
-        pressKey(keycode(event))});
-    }, []);
-
-    const pressKey = (code) => {
-      const newCode = keycode(code);
-      if(newCode === 13)
-        return;
-
-      windowCi?.simulateKeyEvent(newCode, true);
-      windowCi?.simulateKeyEvent(newCode, false);
-      console.log("Key code pressed = ", newCode);
-    };
-
     return (
     <div className="canvasParent">
-      {/* <p style={{color: "white"}}>{text}</p> */}
       <canvas className="dosCanvas" ref={ref}/>
     </div> 
     );

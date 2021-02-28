@@ -17,11 +17,9 @@ function App() {
           <div className="jumbotron jumbotron-fluid mainBg">
             <Container>
               <Row>
-                <Col xs={4}></Col>
-                <Col xs={4}>
+                <Col xs={12}>
                   <JsDos setJsDosIsReady={setJsDosIsReady}/>
                 </Col>
-                <Col xs={4}></Col>
               </Row>
             </Container>
           </div>
