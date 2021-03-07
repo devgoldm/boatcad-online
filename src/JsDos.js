@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import zipFile from "./BOATCAD.zip";
-import keycode from 'keycode';
 require("js-dos");
 const Dos = window.Dos;
 

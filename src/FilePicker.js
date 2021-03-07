@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { saveAs } from 'file-saver';
 import Button from 'react-bootstrap/Button';
 import { Col, Container, Row } from 'react-bootstrap';
+import zipFile from "./BOATCAD.zip";
 
 const OBJ_STORE = "FILE_DATA";
 
@@ -88,6 +89,16 @@ function FilePicker(props) {
             Files&nbsp;&nbsp;<Button size="sm" onClick={() => {setRefresh(!refresh)}}>Refresh</Button>
           </h1>
         </Col>
+      </Row>
+      <br/>
+      <Row>
+        <Col xs={4}></Col>
+        <Col xs={4}>
+          <div style={{textAlign: "center"}}>
+            <Button href={zipFile} variant="success" size="sm">Download BoatCAD</Button>
+          </div>
+        </Col>
+        <Col xs={4}></Col>
       </Row>
       <br/>
       <Row>
